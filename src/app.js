@@ -17,6 +17,8 @@ app.get('/hi', (req, res) => {
 
 const authRouter = require('./routes/authRouter')
 app.use(authRouter)
+const routeHandler = require('./routes/routeHandler')
+app.use(routeHandler)
 
 
 // Error catching
