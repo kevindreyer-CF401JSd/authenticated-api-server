@@ -15,6 +15,9 @@ app.get('/hi', (req, res) => {
   res.status(200).json({ hello:'world' })
 })
 
+const authRouter = require('./routes/authRouter')
+app.use(authRouter)
+
 
 // Error catching
 
