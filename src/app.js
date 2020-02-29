@@ -6,15 +6,12 @@ const morgan = require('morgan')
 const app = express()
 
 // app level Middleware
-// app.use(cors())
+app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())  //request are JSON Objects
 
 // Routes
 app.get('/hi', (req, res) => {
-  // console.log('req',req)
-  // console.log('res',res)
-  // res.send('hello')
   res.status(200).json({ hello:'world' })
 })
 
