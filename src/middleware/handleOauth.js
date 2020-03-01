@@ -1,5 +1,5 @@
 const superagent = require('superagent')
-const User = require('../model/users')
+const User = require('../models/users')
 
 const { 
   GITHUB_CLIENT_ID_CODE,
@@ -55,10 +55,11 @@ async function handleOauth (req, res, next) {
     console.log('(2) ACCESS TOKEN:', remoteToken)
     const remoteUsername = await getRemoteUsername(remoteToken)
     console.log('(3) GITHUB USER:', remoteUsername)
+    const [user, token] = await getUser(remoteUsername)
     req.user = user
     req.token = token
     console.log('(4a) LOCAL USER:', user)
-    console.log('(4b) USER\'S TOKEN:', token)
+    console.log('(4b) USER\'S JWT TOKEN:', { token })
     next()
   } catch (err) {
     next(`ERROR: ${err.message}`)

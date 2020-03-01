@@ -10,6 +10,7 @@ authRouter.get('/hiauth', (req, res) => {
 const User = require('../models/users')
 const basicAuth = require('../middleware/basicAuth')
 const bearerAuth = require('../middleware/bearerAuth')
+const handleOauth = require('../middleware/handleOauth')
 
 //signup
 authRouter.post('/signup', (req, res, next) => {
@@ -36,5 +37,8 @@ authRouter.get('/supersecret', bearerAuth, async (req, res, next) => {
 })
 
 //oauth
+authRouter.get('/oauth', handleOauth, (req, res, next) => {
+  res.status(200).json({ message: 'signed in with oauth' })
+})
 
 module.exports = authRouter
