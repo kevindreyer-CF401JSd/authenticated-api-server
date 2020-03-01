@@ -40,17 +40,6 @@ authRouter.get('/supersecret', bearerAuth, async (req, res, next) => {
   res.status(200).json([{ username: req.user.username, userValid: req.user.valid }])
 })
 
-//acl read products auth
-authRouter.get('/productstest', bearerAuth, acl('read'), (req, res, next) => {
-  res.status(200).json(productstest)
-})
-
-//acl create products auth
-authRouter.post('/productstest', bearerAuth, acl('create'), (req, res, next) => {
-  productstest.push(req.body)
-  res.json(req.body)
-})
-
 //oauth
 authRouter.get('/oauth', handleOauth, (req, res, next) => {
   res.status(200).json({ message: 'signed in with oauth' })
