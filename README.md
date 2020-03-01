@@ -43,6 +43,7 @@ Fully functional, authenticated and authorized API Server
 - products
   - `http get :3000/products 'Authorization:Bearer <user token with acl permissions for route>'`
   - `http post :3000/products name="smartphone" 'Authorization:Bearer <user token with acl permissions for route>'`
+  - `http put :3000/products/<product id> <field name>=<new field value>'Authorization:Bearer <user token with acl permissions for route>'`
 
 - permissions
  - `http get :3000/products 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwODQ5NzEsImV4cCI6MTU4MzA4ODU3MX0._W-Xj9NYi24DerqXBrGKzDqDoIchZyaXWyHZYeGoNGA'`

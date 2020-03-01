@@ -14,8 +14,8 @@ const bearerAuth = require('../middleware/bearerAuth')
 const handleOauth = require('../middleware/handleOauth')
 const acl = require('../middleware/accessControlList')
 
-//acl read products auth
-prodRouter.get('/products', bearerAuth, acl('read'), async (req, res, next) => {
+//read products auth
+prodRouter.get('/products', bearerAuth, async (req, res, next) => {
   const allProducts = await Products.find()
   res.status(200).json(allProducts)
 })
@@ -28,9 +28,24 @@ prodRouter.post('/products', bearerAuth, acl('create'), (req, res, next) => {
 })
 
 //acl update put products auth
+//this.schema.findByIdAndUpdate(id, record, { new: true });
+prodRouter.put('/products/:id', bearerAuth, acl('update'), (req, res, next) => {
+  products.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(result => {
+      res.status(200).json(result)
+    })
+    .catch(next)
+})
 
 //acl update patch products auth
+prodRouter.patch('/products/:id', bearerAuth, acl('update'), (req, res, next) => {
+  
+})
 
 //acl delete products auth
+//this.schema.findByIdAndDelete(id);
+prodRouter.delete('/products/:id', bearerAuth, acl('delete'), (req, res, next) => {
+  
+})
 
 module.exports = prodRouter;
