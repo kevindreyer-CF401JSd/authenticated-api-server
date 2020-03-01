@@ -8,8 +8,11 @@ const SECRET = process.env.SECRET || 'changeme'
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true, default: 'supersecretpassword' },
-  valid: { type: Boolean, default: true }
+  valid: { type: Boolean, default: true },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: 'Role', autopopulate: true }
 })
+
+userSchema.plugin(require('mongoose-autopopulate'))
 
 // save user to DB
 userSchema.pre('save', async function () {
@@ -23,7 +26,8 @@ userSchema.methods.generateToken = function () {
   const tokenData = {
     id: this._id,
     username: this.username,
-    valid: this.valid
+    valid: this.valid,
+    permissions: this.role.permissions || [ ]
   }
   return jwt.sign(tokenData, SECRET, { expiresIn: '1h' })
 }
@@ -47,7 +51,7 @@ userSchema.statics.authenticateToken = async function (token) {
     if (user.valid) {
       return user
     } else {
-      return Promise.reject(new Error('Token in valid'))
+      return Promise.reject(new Error('Token invalid'))
     }
   } catch (error) {
     return Promise.reject(error)

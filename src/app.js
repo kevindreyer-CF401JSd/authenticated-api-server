@@ -14,11 +14,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
 
-const authRouter = require('./routes/authRouter')
-app.use(authRouter)
 const routeHandler = require('./routes/routeHandler')
 app.use(routeHandler)
-
+const authRouter = require('./routes/authRouter')
+app.use(authRouter)
+const rolesRouter = require('./routes/rolesRouter')
+app.use(rolesRouter)
 
 // Error catching
 const {errorHandler, notFoundHandler} = require('./middleware/errorHandlers')
