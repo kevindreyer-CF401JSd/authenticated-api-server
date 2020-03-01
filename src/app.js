@@ -10,6 +10,7 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())  //request are JSON Objects
 
+const ROUTEBASE = process.env.ROUTEBASE
 // Routes
 app.get('/hi', (req, res) => {
   res.status(200).json({ hello:'world' })
