@@ -47,7 +47,7 @@ userSchema.statics.authenticateToken = async function (token) {
     if (!tokenObject.username) {
       return Promise.reject(new Error('Token is malformed'))
     }
-
+    // console.log('tokenObject',tokenObject)
     const user = await this.findOne({ username: tokenObject.username })
     if (user.valid) {
       return user

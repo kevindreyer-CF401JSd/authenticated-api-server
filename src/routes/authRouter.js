@@ -41,12 +41,12 @@ authRouter.get('/supersecret', bearerAuth, async (req, res, next) => {
 })
 
 //acl read products auth
-authRouter.get('/products', bearerAuth, acl('read'), async (req, res, next) => {
+authRouter.get('/products', bearerAuth, acl('read'), (req, res, next) => {
   res.status(200).json(products)
 })
 
 //acl create products auth
-authRouter.post('/products', bearerAuth, acl('create'), async (req, res, next) => {
+authRouter.post('/products', bearerAuth, acl('create'), (req, res, next) => {
   products.push(req.body)
   res.json(req.body)
 })

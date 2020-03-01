@@ -1,7 +1,9 @@
 function accessControlList (permission) {
+  console.log('permission',permission)
   return function (req, res, next) {
     try {
-      if (req.user.role.permission.includes(permission)) {
+      console.log('req.user.role.permission',req.user.role.permissions)
+      if (req.user.role.permissions.includes(permission)) {
         next()
       } else {
         next(new Error('No Access'))
