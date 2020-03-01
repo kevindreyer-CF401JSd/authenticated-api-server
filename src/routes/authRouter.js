@@ -8,8 +8,8 @@ authRouter.get('/hiauth', (req, res) => {
 })
 
 const User = require('../models/users')
-// const basicAuth = require('../middleware/')
-// const bearerAuth = require('../middleware/')
+const basicAuth = require('../middleware/basicAuth')
+const bearerAuth = require('../middleware/bearerAuth')
 
 //signup
 authRouter.post('/signup', (req, res, next) => {
@@ -20,6 +20,9 @@ authRouter.post('/signup', (req, res, next) => {
 })
 
 //signin
+authRouter.post('/signin', basicAuth, (req, res, next) => {
+  res.status(200).json({ token: req.token })
+})
 
 //get all users
 authRouter.get('/users', async (req, res, next) => {
@@ -28,6 +31,9 @@ authRouter.get('/users', async (req, res, next) => {
 })
 
 //bearer auth
+authRouter.get('/supersecret', bearerAuth, async (req, res, next) => {
+  res.status(200).json([{ username: req.user.username, userValid: req.user.valid }])
+})
 
 //oauth
 

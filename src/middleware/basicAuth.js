@@ -11,7 +11,7 @@ function basicAuth (req, res, next) {
   const decoded = base64.decode(basic)
   const [user, pass] = decoded.split(':') 
 
-  return User.authticateBasic(user, pass)
+  return User.authenticateBasic(user, pass)
     .then(_validate)
 
   function _validate (user) {
