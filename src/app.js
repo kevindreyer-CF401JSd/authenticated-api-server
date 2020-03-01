@@ -20,6 +20,8 @@ const authRouter = require('./routes/authRouter')
 app.use(authRouter)
 const rolesRouter = require('./routes/rolesRouter')
 app.use(rolesRouter)
+const productRouter = require('./routes/productsRouter')
+app.use(productRouter)
 
 // Error catching
 const {errorHandler, notFoundHandler} = require('./middleware/errorHandlers')

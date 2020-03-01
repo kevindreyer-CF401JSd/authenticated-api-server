@@ -2,7 +2,7 @@ const express = require('express')
 const authRouter = express.Router()
 
 const ROUTEBASE = process.env.ROUTEBASE
-const products = []
+const productstest = []
 
 authRouter.get('/hiauth', (req, res) => {
   res.status(200).json({ hello: 'auth'})
@@ -41,13 +41,13 @@ authRouter.get('/supersecret', bearerAuth, async (req, res, next) => {
 })
 
 //acl read products auth
-authRouter.get('/products', bearerAuth, acl('read'), (req, res, next) => {
-  res.status(200).json(products)
+authRouter.get('/productstest', bearerAuth, acl('read'), (req, res, next) => {
+  res.status(200).json(productstest)
 })
 
 //acl create products auth
-authRouter.post('/products', bearerAuth, acl('create'), (req, res, next) => {
-  products.push(req.body)
+authRouter.post('/productstest', bearerAuth, acl('create'), (req, res, next) => {
+  productstest.push(req.body)
   res.json(req.body)
 })
 

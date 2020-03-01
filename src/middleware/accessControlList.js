@@ -2,7 +2,7 @@ function accessControlList (permission) {
   console.log('permission',permission)
   return function (req, res, next) {
     try {
-      console.log('req.user.role.permission',req.user.role.permissions)
+      // console.log('req.user.role.permission',req.user.role.permissions)
       if (req.user.role.permissions.includes(permission)) {
         next()
       } else {
