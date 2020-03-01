@@ -43,17 +43,21 @@ Fully functional, authenticated and authorized API Server
 - products
   - `http get :3000/products 'Authorization:Bearer <user token with acl permissions for route>'`
   - `http post :3000/products name="smartphone" 'Authorization:Bearer <user token with acl permissions for route>'`
-  - `http put :3000/products/<product id> <field name>=<new field value>'Authorization:Bearer <user token with acl permissions for route>'`
+  - `http put :3000/products/<product id> <field name>=<new field value> 'Authorization:Bearer <user token with acl permissions for route>'`
+  - `http delete :3000/products/<product id> 'Authorization:Bearer <user token with acl permissions for route>'`
 
 - permissions
  - `http get :3000/products 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwODQ5NzEsImV4cCI6MTU4MzA4ODU3MX0._W-Xj9NYi24DerqXBrGKzDqDoIchZyaXWyHZYeGoNGA'`
  - `http post :3000/products name="smartphone" 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwODQ5NzEsImV4cCI6MTU4MzA4ODU3MX0._W-Xj9NYi24DerqXBrGKzDqDoIchZyaXWyHZYeGoNGA'`
 
-- token
+- token decode
 - `http get :3000/supersecret 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWIwZWMzMThlMmUxNDI4NjE5ODUxZCIsInVzZXJuYW1lIjoidGVzdDEiLCJ1c2VyVmFsaWQiOnRydWUsImlhdCI6MTU4MzAyNTg1OSwiZXhwIjoxNTgzMDI5NDU5fQ.kA95K1xlCLed70m1Xnm39taS1yKyu36OLPQWB51yZRE'`
 
-test1: user role
+test1: user role pw:password
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmMzZhMGNlMzJlNGYyOWVjYTc5NiIsInVzZXJuYW1lIjoidGVzdDEiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCJdLCJpYXQiOjE1ODMwOTE1NjIsImV4cCI6MTU4MzA5NTE2Mn0.l1EH6e3jdhgwSvtjPGlcMUIYf5H7VbresFDNQzT9kdc`
 
-test2: editor role
-`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwOTQ1MDEsImV4cCI6MTU4MzA5ODEwMX0.oI6Hh8Tbq9YG2PWZT5doAmu3rT-6ViduMXj0X3opKH4`
+test2: editor role pw:password
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwOTk2ODcsImV4cCI6MTU4MzEwMzI4N30.fNY4ARknALr3lHUQPaOWY5hD4EtfwQI-DJNnssNksU8`
+
+testadmin: admin role pw:password
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNTQ3MGNlMzJlNGYyOWVjYTc5NyIsInVzZXJuYW1lIjoidGVzdGFkbWluIiwidmFsaWQiOnRydWUsInBlcm1pc3Npb25zIjpbInJlYWQiLCJjcmVhdGUiLCJ1cGRhdGUiLCJkZWxldGUiXSwiaWF0IjoxNTgzMDk5NDkwLCJleHAiOjE1ODMxMDMwOTB9.CqtqPacpEetOKdBRMspCSPmsNdkOx0hXhAgj8zgw1b0`

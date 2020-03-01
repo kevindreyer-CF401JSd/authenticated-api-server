@@ -28,7 +28,6 @@ prodRouter.post('/products', bearerAuth, acl('create'), (req, res, next) => {
 })
 
 //acl update put products auth
-//this.schema.findByIdAndUpdate(id, record, { new: true });
 prodRouter.put('/products/:id', bearerAuth, acl('update'), (req, res, next) => {
   Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(result => {
@@ -43,9 +42,12 @@ prodRouter.patch('/products/:id', bearerAuth, acl('update'), (req, res, next) =>
 })
 
 //acl delete products auth
-//this.schema.findByIdAndDelete(id);
 prodRouter.delete('/products/:id', bearerAuth, acl('delete'), (req, res, next) => {
-  
+  Products.findByIdAndDelete(req.params.id)
+    .then(result => {
+      res.status(202).json(result)
+    })
+    .catch(next)
 })
 
 module.exports = prodRouter;
