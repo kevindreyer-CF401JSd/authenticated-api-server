@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Auth api test app</title>
+  </head>
+  <body>
+    <main>
+      <h1>Click below to login with GitHub</h1>
+      <a href="#" id="oauth">Login</a>
+    </main>
+
+    <script>
+      const URL = 'https://github.com/login/oauth/authorize'
+      const options = {
+        client_id: 'abafc20a153ff19f78b4',
+        redirect_uri: 'http://localhost:3000/oauth',
+        scope: '',
+        state: 'this is unguessable!'
+      }
+
+      const queryString = Object.keys(options).map(key => {
+        return `${key}=${encodeURIComponent(options[key])}`
+      }).join('&')
+
+      const authURL = `${URL}?${queryString}`
+
+      const link = document.getElementById('oauth')
+      link.setAttribute('href', authURL)
+    </script>
+  </body>
+</html>

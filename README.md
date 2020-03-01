@@ -27,6 +27,8 @@ Fully functional, authenticated and authorized API Server
 
 - `http get :3000/users`
 - `http post :3000/signup username=test1 password=password`
+- `http -a test2:password get :3000/signin`
+
 
 - `http get :3000/supersecret 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWIwZWMzMThlMmUxNDI4NjE5ODUxZCIsInVzZXJuYW1lIjoidGVzdDEiLCJ1c2VyVmFsaWQiOnRydWUsImlhdCI6MTU4MzAyNTg1OSwiZXhwIjoxNTgzMDI5NDU5fQ.kA95K1xlCLed70m1Xnm39taS1yKyu36OLPQWB51yZRE'`
 

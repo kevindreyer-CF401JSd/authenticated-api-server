@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
+const path = require('path')
 
 // Setup express app
 const app = express()
@@ -9,11 +10,9 @@ const app = express()
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())  //request are JSON Objects
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-app.get('/hi', (req, res) => {
-  res.status(200).json({ hello:'world' })
-})
 
 const authRouter = require('./routes/authRouter')
 app.use(authRouter)
