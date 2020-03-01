@@ -23,6 +23,10 @@ app.use(rolesRouter)
 const productRouter = require('./routes/productsRouter')
 app.use(productRouter)
 
+app.get('/this_will_error', (req, res) => {
+  throw new Error('500 Error check route')
+})
+
 // Error catching
 const {errorHandler, notFoundHandler} = require('./middleware/errorHandlers')
 app.use(notFoundHandler)
