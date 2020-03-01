@@ -8,10 +8,11 @@ const SECRET = process.env.SECRET || 'changeme'
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true, default: 'supersecretpassword' },
-  valid: { type: Boolean, default: true },
+  valid: { type: Boolean, default: true, autopopulate: true },
   role: { type: mongoose.Schema.Types.ObjectId, ref: 'Role', autopopulate: true }
 })
 
+// helps auto populate the user table with roles
 userSchema.plugin(require('mongoose-autopopulate'))
 
 // save user to DB
