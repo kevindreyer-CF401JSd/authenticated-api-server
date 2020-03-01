@@ -22,6 +22,9 @@ app.use(routeHandler)
 
 
 // Error catching
+const {errorHandler, notFoundHandler} = require('./middleware/errorHandlers')
+app.use(notFoundHandler)
+app.use(errorHandler)
 
 // Export
 module.exports = {
