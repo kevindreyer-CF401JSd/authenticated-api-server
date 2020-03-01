@@ -30,7 +30,7 @@ prodRouter.post('/products', bearerAuth, acl('create'), (req, res, next) => {
 //acl update put products auth
 //this.schema.findByIdAndUpdate(id, record, { new: true });
 prodRouter.put('/products/:id', bearerAuth, acl('update'), (req, res, next) => {
-  products.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(result => {
       res.status(200).json(result)
     })
