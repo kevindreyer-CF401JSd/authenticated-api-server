@@ -16,7 +16,7 @@ const handleOauth = require('../middleware/handleOauth')
 const acl = require('../middleware/accessControlList')
 
 //signup
-authRouter.post('/signup', (req, res, next) => {
+authRouter.post('/signup', async (req, res, next) => {
   req.body.role = await Role.findOne({ name: req.body.role })
   const user = new User(req.body)
   user.save()
