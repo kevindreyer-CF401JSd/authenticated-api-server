@@ -3,20 +3,20 @@ Fully functional, authenticated and authorized API Server
 
 
 ## Requirements
-- [ ] - API routes protected with proper permisssions based on user capability using Bearer Authentication and an ACL
-  - [ ] - `app.get(...)` require authentication only, no specific roles
-  - [ ] - `app.post(...)` require the *create* permission
-  - [ ] - `app.put(...)` require the *update* permission
+- [x] - API routes protected with proper permisssions based on user capability using Bearer Authentication and an ACL
+  - [x] - `app.get(...)` require authentication only, no specific roles
+  - [x] - `app.post(...)` require the *create* permission
+  - [x] - `app.put(...)` require the *update* permission
   - [ ] - `app.patch(...)` require the *update* permission
-  - [ ] - `app.delete(...)` require the *delete* permission
+  - [x] - `app.delete(...)` require the *delete* permission
 - [x] - Auth Middleware
 - [x] - Auth Model
 - [ ] - Stretch Goals
   - [ ] - turn on and off authorization and authentication with env variable
 - [ ] - Testing, 100% test coverage
   - [ ] - Auth router
-    - [ ] - Signup
-    - [ ] - Signin
+    - [x] - Signup
+    - [x] - Signin
   - [ ] - Model Finder Middleware
   - [ ] - Auth Middleware, protected Routes
   - [ ] - OAuth Chooser
@@ -57,7 +57,19 @@ test1: user role pw:password
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmMzZhMGNlMzJlNGYyOWVjYTc5NiIsInVzZXJuYW1lIjoidGVzdDEiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCJdLCJpYXQiOjE1ODMwOTE1NjIsImV4cCI6MTU4MzA5NTE2Mn0.l1EH6e3jdhgwSvtjPGlcMUIYf5H7VbresFDNQzT9kdc`
 
 test2: editor role pw:password
-`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwOTk2ODcsImV4cCI6MTU4MzEwMzI4N30.fNY4ARknALr3lHUQPaOWY5hD4EtfwQI-DJNnssNksU8`
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMxMTI1NjQsImV4cCI6MTU4MzExNjE2NH0.BKBwQOGxeg4YaIYzeoOnyVJ25tuo7dKIjF2TqB4g9RU`
 
 testadmin: admin role pw:password
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNTQ3MGNlMzJlNGYyOWVjYTc5NyIsInVzZXJuYW1lIjoidGVzdGFkbWluIiwidmFsaWQiOnRydWUsInBlcm1pc3Npb25zIjpbInJlYWQiLCJjcmVhdGUiLCJ1cGRhdGUiLCJkZWxldGUiXSwiaWF0IjoxNTgzMDk5NDkwLCJleHAiOjE1ODMxMDMwOTB9.CqtqPacpEetOKdBRMspCSPmsNdkOx0hXhAgj8zgw1b0`
+
+## Resources
+[https://blog.stvmlbrn.com/2018/06/18/test-jwt-authenticated-express-routes-with-jest-and-supertest.html](https://blog.stvmlbrn.com/2018/06/18/test-jwt-authenticated-express-routes-with-jest-and-supertest.html)
+
+
+
+### Git error 
+```
+Kevins-MBP:authenticated-api-server kevindreyer$ git push origin test
+error: src refspec test does not match any
+error: failed to push some refs to 'https://github.com/kevindreyer-CF401JSd/authenticated-api-server.git'
+```

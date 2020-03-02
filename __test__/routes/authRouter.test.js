@@ -2,6 +2,7 @@ const supergoose = require('@code-fellows/supergoose')
 const jwt = require('jsonwebtoken')
 const { server } = require('../../src/app')
 const mockRequest = supergoose(server)
+const request = require('supertest');
 
 let roles = {
   admin: { name: 'admin', permissions: ['read','create','update','delete'] },
@@ -32,6 +33,7 @@ describe('Auth Router testing, roles and users', () => {
     })
   })
   Object.keys(users).forEach(userType => {
+    let resultTokenKey
     describe(`${userType} user`, () => {
       it('creates a user', () => {
         return mockRequest.post('/signup')
@@ -46,10 +48,19 @@ describe('Auth Router testing, roles and users', () => {
         return mockRequest.post('/signin')
           .auth(users[userType].username, users[userType].password)
           .then(results => {
-            const resultTokenKey = JSON.parse(results.text).token
+            resultTokenKey = JSON.parse(results.text).token
             expect(resultTokenKey).toBeDefined()
             // let token = jwt.verify(resultTokenKey, SECRET)
             // expect(token.username).toEqual(users[userType].username)
+          })
+      })
+      it('user signin with bearer auth', () => {
+        return mockRequest.get('/supersecret')
+          .set('Authorization', `Bearer ${resultTokenKey}`)
+          .then(results => {
+            expect(results.statusCode).toBe(200);
+            expect(results.type).toBe('application/json')
+            expect(JSON.parse(results.text)[0].username).toEqual(users[userType].username)
           })
       })
     })

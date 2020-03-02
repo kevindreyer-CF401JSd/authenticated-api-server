@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
 const SECRET = process.env.SECRET || 'changeme'
+const AUTHENTICATION_DISABLED = process.env.AUTHENTICATION_DISABLED || false
+
 
 //mongoose schema
 const userSchema = new mongoose.Schema({
@@ -42,6 +44,7 @@ userSchema.statics.authenticateBasic = function (username, password) {
 
 // auth JWT Token
 userSchema.statics.authenticateToken = async function (token) {
+
   try {
     const tokenObject = jwt.verify(token, SECRET)
     if (!tokenObject.username) {
