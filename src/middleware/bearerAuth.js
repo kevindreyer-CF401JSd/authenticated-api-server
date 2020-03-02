@@ -1,5 +1,6 @@
 const User = require('../models/users')
 
+
 function bearerAuth (req, res, next) {
   if (!req.headers.authorization) {
     next(new Error('No authorization in header'))
