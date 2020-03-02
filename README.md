@@ -17,8 +17,8 @@ Fully functional, authenticated and authorized API Server
   - [ ] - Auth router
     - [x] - Signup
     - [x] - Signin
-  - [ ] - Model Finder Middleware
-  - [ ] - Auth Middleware, protected Routes
+  - [x] - Model Finder Middleware
+  - [x] - Auth Middleware, protected Routes
   - [ ] - OAuth Chooser
   - [ ] - API Routes
 
