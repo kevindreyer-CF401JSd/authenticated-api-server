@@ -64,6 +64,7 @@ testadmin: admin role pw:password
 
 ## Resources
 [https://blog.stvmlbrn.com/2018/06/18/test-jwt-authenticated-express-routes-with-jest-and-supertest.html](https://blog.stvmlbrn.com/2018/06/18/test-jwt-authenticated-express-routes-with-jest-and-supertest.html)
+[https://hackernoon.com/api-testing-with-jest-d1ab74005c0a](https://hackernoon.com/api-testing-with-jest-d1ab74005c0a)
 
 
 
