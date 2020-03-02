@@ -1,6 +1,6 @@
+const supergoose = require('@code-fellows/supergoose')
 const jwt = require('jsonwebtoken')
 const { server } = require('../../src/app')
-const supergoose = require('@code-fellows/supergoose')
 const mockRequest = supergoose(server)
 
 let roles = {
@@ -42,6 +42,32 @@ describe('Auth Router testing, roles and users', () => {
             expect(result.role).toEqual(userType.role)
           })
       })
+      it('user signin with basic', () => {
+        return mockRequest.post('/signin')
+          .auth(users[userType].username, users[userType].password)
+          .then(results => {
+            const resultTokenKey = JSON.parse(results.text).token
+            expect(resultTokenKey).toBeDefined()
+            // let token = jwt.verify(resultTokenKey, SECRET)
+            // expect(token.username).toEqual(users[userType].username)
+          })
+      })
+    })
+  })
+  describe('the route get /roles', () => {
+    it('returns our roles', () => {
+      return mockRequest.get('/roles')
+        .then(result => {
+          expect(result).toBeDefined()
+        })
+    })
+  })
+  describe('the route get /users', () => {
+    it('returns our users', () => {
+      return mockRequest.get('/users')
+        .then(result => {
+          expect(result).toBeDefined()
+        })
     })
   })
 

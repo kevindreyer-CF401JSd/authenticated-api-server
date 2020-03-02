@@ -4,10 +4,6 @@ const authRouter = express.Router()
 const ROUTEBASE = process.env.ROUTEBASE
 const productstest = []
 
-authRouter.get('/hiauth', (req, res) => {
-  res.status(200).json({ hello: 'auth'})
-})
-
 const User = require('../models/users')
 const Role = require('../models/roles')
 const basicAuth = require('../middleware/basicAuth')
