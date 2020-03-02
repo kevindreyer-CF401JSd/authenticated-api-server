@@ -17,7 +17,7 @@ let users = {
 
 const SECRET = "supersecretcodewordthatonlytheserverknows"
 
-describe('Auth Router testing', () => {
+describe('Auth Router testing, roles and users', () => {
   Object.keys(roles).forEach(roleType => {
     describe(`${roleType} role`, () => {
       it('creates a role', () => {
@@ -27,6 +27,19 @@ describe('Auth Router testing', () => {
             expect(result).toBeDefined()
             expect(result.name).toEqual(roleType.name)
             expect(result.permissions).toEqual(roleType.permissions)
+          })
+      })
+    })
+  })
+  Object.keys(users).forEach(userType => {
+    describe(`${userType} user`, () => {
+      it('creates a user', () => {
+        return mockRequest.post('/signup')
+          .send(users[userType])
+          .then(result => {
+            expect(result).toBeDefined()
+            expect(result.username).toEqual(userType.username)
+            expect(result.role).toEqual(userType.role)
           })
       })
     })
