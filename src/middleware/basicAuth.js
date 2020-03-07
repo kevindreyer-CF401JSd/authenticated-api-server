@@ -1,5 +1,19 @@
+/**
+ * Basic Authentication
+ * @module basicAuth
+ */
+
 const base64 = require('base-64')
 const User = require('../models/users')
+
+
+/**
+ * Basic Authentication of user 
+ * @param req
+ * @param next
+ * @returns {user}
+ * @function basicAuth
+ */
 
 function basicAuth (req, res, next) {
 

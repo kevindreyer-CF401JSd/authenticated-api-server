@@ -1,10 +1,20 @@
-// Class of generic mongoose model
+/**
+ * Class of generic mongoose model
+ */
 class Model {
+    /**
+     * 
+     * @param {Object} schema 
+     */
   constructor (schema) {
       this.schema = schema;
   }
 
   //Create
+  /**
+   * 
+   * @param {*} record 
+   */
   create (record) {
       const newRecord = new this.schema(record);
       return newRecord.save();
