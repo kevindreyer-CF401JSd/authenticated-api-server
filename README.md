@@ -53,15 +53,6 @@ Fully functional, authenticated and authorized API Server
 - token decode
 - `http get :3000/supersecret 'Authorization:Bearer <>`
 
-test1: user role pw:password
-`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmMzZhMGNlMzJlNGYyOWVjYTc5NiIsInVzZXJuYW1lIjoidGVzdDEiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCJdLCJpYXQiOjE1ODMwOTE1NjIsImV4cCI6MTU4MzA5NTE2Mn0.l1EH6e3jdhgwSvtjPGlcMUIYf5H7VbresFDNQzT9kdc`
-
-test2: editor role pw:password
-`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMxMTI1NjQsImV4cCI6MTU4MzExNjE2NH0.BKBwQOGxeg4YaIYzeoOnyVJ25tuo7dKIjF2TqB4g9RU`
-
-testadmin: admin role pw:password
-`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNTQ3MGNlMzJlNGYyOWVjYTc5NyIsInVzZXJuYW1lIjoidGVzdGFkbWluIiwidmFsaWQiOnRydWUsInBlcm1pc3Npb25zIjpbInJlYWQiLCJjcmVhdGUiLCJ1cGRhdGUiLCJkZWxldGUiXSwiaWF0IjoxNTgzMDk5NDkwLCJleHAiOjE1ODMxMDMwOTB9.CqtqPacpEetOKdBRMspCSPmsNdkOx0hXhAgj8zgw1b0`
-
 ## Resources
 [https://blog.stvmlbrn.com/2018/06/18/test-jwt-authenticated-express-routes-with-jest-and-supertest.html](https://blog.stvmlbrn.com/2018/06/18/test-jwt-authenticated-express-routes-with-jest-and-supertest.html)
 [https://hackernoon.com/api-testing-with-jest-d1ab74005c0a](https://hackernoon.com/api-testing-with-jest-d1ab74005c0a)

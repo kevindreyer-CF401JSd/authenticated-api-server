@@ -11,7 +11,15 @@ const bearerAuth = require('../middleware/bearerAuth')
 const handleOauth = require('../middleware/handleOauth')
 const acl = require('../middleware/accessControlList')
 
-//signup
+/**
+ *  @swagger
+ *  /signup:
+ *  post:
+ *    description: signup user to api and assign role
+ *    responses:
+ *      '200':
+ *        description: respondes with jwt token
+ */
 authRouter.post('/signup', async (req, res, next) => {
   req.body.role = await Role.findOne({ name: req.body.role })
   const user = new User(req.body)
