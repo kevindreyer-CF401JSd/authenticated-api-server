@@ -47,11 +47,11 @@ Fully functional, authenticated and authorized API Server
   - `http delete :3000/products/<product id> 'Authorization:Bearer <user token with acl permissions for route>'`
 
 - permissions
- - `http get :3000/products 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwODQ5NzEsImV4cCI6MTU4MzA4ODU3MX0._W-Xj9NYi24DerqXBrGKzDqDoIchZyaXWyHZYeGoNGA'`
- - `http post :3000/products name="smartphone" 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmNWFiMGNlMzJlNGYyOWVjYTc5OSIsInVzZXJuYW1lIjoidGVzdDIiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSJdLCJpYXQiOjE1ODMwODQ5NzEsImV4cCI6MTU4MzA4ODU3MX0._W-Xj9NYi24DerqXBrGKzDqDoIchZyaXWyHZYeGoNGA'`
+ - `http get :3000/products 'Authorization:Bearer <>`
+ - `http post :3000/products name="smartphone" 'Authorization:Bearer <>`
 
 - token decode
-- `http get :3000/supersecret 'Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWIwZWMzMThlMmUxNDI4NjE5ODUxZCIsInVzZXJuYW1lIjoidGVzdDEiLCJ1c2VyVmFsaWQiOnRydWUsImlhdCI6MTU4MzAyNTg1OSwiZXhwIjoxNTgzMDI5NDU5fQ.kA95K1xlCLed70m1Xnm39taS1yKyu36OLPQWB51yZRE'`
+- `http get :3000/supersecret 'Authorization:Bearer <>`
 
 test1: user role pw:password
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNWJmMzZhMGNlMzJlNGYyOWVjYTc5NiIsInVzZXJuYW1lIjoidGVzdDEiLCJ2YWxpZCI6dHJ1ZSwicGVybWlzc2lvbnMiOlsicmVhZCJdLCJpYXQiOjE1ODMwOTE1NjIsImV4cCI6MTU4MzA5NTE2Mn0.l1EH6e3jdhgwSvtjPGlcMUIYf5H7VbresFDNQzT9kdc`
@@ -68,9 +68,8 @@ testadmin: admin role pw:password
 
 
 
-### Git error 
-```
-Kevins-MBP:authenticated-api-server kevindreyer$ git push origin test
-error: src refspec test does not match any
-error: failed to push some refs to 'https://github.com/kevindreyer-CF401JSd/authenticated-api-server.git'
-```
+### Swagger docs
+[Autogenerating Swagger Documentation with Node & Express](https://www.youtube.com/watch?v=apouPYPh_as&t)
+swagger-jsdoc
+swagger-ui-dist
+swagger-ui-express
