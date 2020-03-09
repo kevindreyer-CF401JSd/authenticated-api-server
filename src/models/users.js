@@ -29,10 +29,10 @@ userSchema.pre('save', async function () {
   }
 })
 
-
-/**
- * 
- */
+ /**
+   * Generate Token
+   * @memberof userSchema
+   */
 userSchema.methods.generateToken = function () {
   const tokenData = {
     id: this._id,

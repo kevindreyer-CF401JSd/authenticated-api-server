@@ -1,3 +1,7 @@
+/**
+ * Roles schema
+ * @module roles
+ */
 const mongoose = require('mongoose')
 
 const rolesSchema = new mongoose.Schema({

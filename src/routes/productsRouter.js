@@ -1,3 +1,7 @@
+/**
+ * Products Routes
+ * @module productsRouter
+ */
 const express = require('express');
 const Products = require('../models/products');
 const products = new Products();

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: src/app.js</title>
+    <title>JSDoc: Source: src/middleware/accessControlList.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: src/app.js</h1>
+    <h1 class="page-title">Source: src/middleware/accessControlList.js</h1>
 
     
 
@@ -27,53 +27,31 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Application
- * @module app
+ * Access Control List Module
+ * @module accessControlList
  */
 
-const express = require('express')
-const cors = require('cors')
-const morgan = require('morgan')
-const path = require('path')
-
-// Setup express app
-const app = express()
-
-// app level Middleware
-app.use(cors())
-app.use(morgan('dev'))
-app.use(express.json())  //request are JSON Objects
-app.use(express.static(path.join(__dirname, 'public')))
-
-// Routes
-
-const routeHandler = require('./routes/routeHandler')
-app.use(routeHandler)
-const authRouter = require('./routes/authRouter')
-app.use(authRouter)
-const rolesRouter = require('./routes/rolesRouter')
-app.use(rolesRouter)
-const productRouter = require('./routes/productsRouter')
-app.use(productRouter)
-
-app.get('/this_will_error', (req, res) => {
-  throw new Error('500 Error check route')
-})
-
-// Error catching
-const {errorHandler, notFoundHandler} = require('./middleware/errorHandlers')
-app.use(notFoundHandler)
-app.use(errorHandler)
-
-// Export
-module.exports = {
-  server: app,
-  start: port => {
-    app.listen(port, () => {
-      console.log(`Express server listening on port ${port}.`)
-    })
+/**
+ * accessControlList
+ * @param {*} permission
+ * @returns
+ */
+function accessControlList (permission) {
+  console.log('permission',permission)
+  return function (req, res, next) {
+    try {
+      // console.log('req.user.role.permission',req.user.role.permissions)
+      if (req.user.role.permissions.includes(permission)) {
+        next()
+      } else {
+        next(new Error('No Access'))
+      }
+    } catch (error) {
+      next(error)
+    }
   }
-}</code></pre>
+}
+module.exports = accessControlList</code></pre>
         </article>
     </section>
 

@@ -6,7 +6,6 @@
 const base64 = require('base-64')
 const User = require('../models/users')
 
-
 /**
  * Basic Authentication of user 
  * @param req
@@ -14,7 +13,6 @@ const User = require('../models/users')
  * @returns {user}
  * @function basicAuth
  */
-
 function basicAuth (req, res, next) {
 
   if (!req.headers.authorization) {

@@ -1,3 +1,13 @@
+/**
+ * Access Control List Module
+ * @module accessControlList
+ */
+
+/**
+ * accessControlList
+ * @param {*} permission
+ * @returns
+ */
 function accessControlList (permission) {
   console.log('permission',permission)
   return function (req, res, next) {

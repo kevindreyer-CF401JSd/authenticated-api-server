@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: src/app.js</title>
+    <title>JSDoc: Source: src/middleware/bearerAuth.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: src/app.js</h1>
+    <h1 class="page-title">Source: src/middleware/bearerAuth.js</h1>
 
     
 
@@ -27,53 +27,35 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Application
- * @module app
+ * Bearer Authentication Module
+ * @module bearerAuth
  */
+const User = require('../models/users')
 
-const express = require('express')
-const cors = require('cors')
-const morgan = require('morgan')
-const path = require('path')
-
-// Setup express app
-const app = express()
-
-// app level Middleware
-app.use(cors())
-app.use(morgan('dev'))
-app.use(express.json())  //request are JSON Objects
-app.use(express.static(path.join(__dirname, 'public')))
-
-// Routes
-
-const routeHandler = require('./routes/routeHandler')
-app.use(routeHandler)
-const authRouter = require('./routes/authRouter')
-app.use(authRouter)
-const rolesRouter = require('./routes/rolesRouter')
-app.use(rolesRouter)
-const productRouter = require('./routes/productsRouter')
-app.use(productRouter)
-
-app.get('/this_will_error', (req, res) => {
-  throw new Error('500 Error check route')
-})
-
-// Error catching
-const {errorHandler, notFoundHandler} = require('./middleware/errorHandlers')
-app.use(notFoundHandler)
-app.use(errorHandler)
-
-// Export
-module.exports = {
-  server: app,
-  start: port => {
-    app.listen(port, () => {
-      console.log(`Express server listening on port ${port}.`)
-    })
+/**
+ * Bearer Auth
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
+function bearerAuth (req, res, next) {
+  if (!req.headers.authorization) {
+    next(new Error('No authorization in header'))
   }
-}</code></pre>
+  const token = req.headers.authorization.split(' ').pop()
+  console.log('token',token)
+  User.authenticateToken(token)
+    .then(valid => {
+      req.user = valid
+      next()
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
+module.exports = bearerAuth</code></pre>
         </article>
     </section>
 

@@ -5,7 +5,7 @@
 
 // get environment variables
 require('dotenv').config()
-
+  
 const { MONGODB_URI, PORT } = process.env
 
 // Connect to MongoDB

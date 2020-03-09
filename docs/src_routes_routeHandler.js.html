@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: src/app.js</title>
+    <title>JSDoc: Source: src/routes/routeHandler.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: src/app.js</h1>
+    <h1 class="page-title">Source: src/routes/routeHandler.js</h1>
 
     
 
@@ -27,53 +27,27 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Application
- * @module app
+ * simple Routes
+ * @module routeHandler
  */
-
 const express = require('express')
-const cors = require('cors')
-const morgan = require('morgan')
-const path = require('path')
+const routeHandler = express.Router()
 
-// Setup express app
-const app = express()
+const ROUTEBASE = process.env.ROUTEBASE
 
-// app level Middleware
-app.use(cors())
-app.use(morgan('dev'))
-app.use(express.json())  //request are JSON Objects
-app.use(express.static(path.join(__dirname, 'public')))
-
-// Routes
-
-const routeHandler = require('./routes/routeHandler')
-app.use(routeHandler)
-const authRouter = require('./routes/authRouter')
-app.use(authRouter)
-const rolesRouter = require('./routes/rolesRouter')
-app.use(rolesRouter)
-const productRouter = require('./routes/productsRouter')
-app.use(productRouter)
-
-app.get('/this_will_error', (req, res) => {
-  throw new Error('500 Error check route')
+routeHandler.get(`${ROUTEBASE}/about`, (req, res) => {
+  res.status(200).json({ 
+    about:'This is a fully functional Authentication and Authorization API Server',
+    help:'place help here'
+  })
 })
 
-// Error catching
-const {errorHandler, notFoundHandler} = require('./middleware/errorHandlers')
-app.use(notFoundHandler)
-app.use(errorHandler)
+routeHandler.get(`${ROUTEBASE}/*`, (req, res) => {
+  res.status(200).json({ hello:'you need to put a route in your route' })
+})
 
-// Export
-module.exports = {
-  server: app,
-  start: port => {
-    app.listen(port, () => {
-      console.log(`Express server listening on port ${port}.`)
-    })
-  }
-}</code></pre>
+module.exports = routeHandler
+</code></pre>
         </article>
     </section>
 

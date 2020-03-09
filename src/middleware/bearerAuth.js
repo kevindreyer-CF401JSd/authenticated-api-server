@@ -1,6 +1,16 @@
+/**
+ * Bearer Authentication Module
+ * @module bearerAuth
+ */
 const User = require('../models/users')
 
-
+/**
+ * Bearer Auth
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 function bearerAuth (req, res, next) {
   if (!req.headers.authorization) {
     next(new Error('No authorization in header'))

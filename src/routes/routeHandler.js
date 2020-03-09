@@ -1,3 +1,7 @@
+/**
+ * simple Routes
+ * @module routeHandler
+ */
 const express = require('express')
 const routeHandler = express.Router()
 
